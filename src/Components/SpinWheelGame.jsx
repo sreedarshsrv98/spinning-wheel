@@ -7,6 +7,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation'; 
 // 1. IMPORT STYLES
 import styles from '@/styles/customstyle.scss';
+import SpinnerWheel from './SpinnerWheel';
 
 // Include Bootstrap CSS via CDN for basic styling and responsiveness
 const BootstrapCSS = () => (
@@ -397,87 +398,7 @@ useEffect(() => {
 
    
 
-// const renderReward = () => (
-//     // Outer container for the pop-up/modal screen.
-//     <div 
-//         className="d-flex align-items-center justify-content-center" 
-//         style={{
-//             position: 'fixed', 
-//             top: 0,
-//             left: 0,
-//             right: 0,
-//             bottom: 0,
-//             zIndex: 1050, 
-//             // NOTE: No background overlay requested
-//         }}
-//     >
-//         {/* ENHANCED Animated Content Wrapper */}
-//         <div 
-//             className="reward-popup-animation-wrapper"
-//             style={{
-//                 // Changed the animation name to the enhanced version
-//                 // Increased duration slightly for better effect, added a subtle delay
-//                 animation: 'pop-in-reward 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards',
-                
-//                 // Initial state is still good practice, although 0% keyframe covers it
-//                 opacity: 0, 
-//             }}
-//         >
-//             {/* The original content starts here */}
-//             <div className="d-flex flex-column align-items-center justify-content-start h-100 p-3 reward-screen-container">
-                
-//                 {/* Frosted Glass Content Card (The actual visible pop-up content) */}
-//                 <div 
-//                     className={`reward-content-card content-card p-4 p-sm-5 text-center`} 
-//                     style={{
-//                         backdropFilter: 'blur(10px)',
-//                         border: '1px solid rgba(255, 255, 255, 0.22)', 
-//                         boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
-//                         maxWidth: '355px',
-//                         width: '100%',
-//                         height: 'auto',
-//                     }}
-//                 >
-                    
-//                     {/* 2. Prize Text */}
-//                     <div className="win-message-text">
-//                  You won<br />10% Cashback
-//                     </div>
 
-//                     {/* 3. Registration ID & Name Block */}
-//                     <hr className='hr-absolute-line'/>
-//                     <div className="text-white text-start mb-3">
-//                         <div className="d-flex justify-content-between mb-1 small mb-3">
-//                             <span className="detail-label-text">Registration ID:</span>
-//                             <span className="detail-label-text">{userData.registrationId || "#122878999"}</span>
-//                         </div>
-//                         <div className="d-flex justify-content-between small mb-3">
-//                             <span className="detail-label-text">Name:</span>
-//                             <span className="detail-label-text">{userData.name || "Darsh Bhavsar"}</span>
-//                         </div>
-//                     </div>
-
-//                     {/* 4. Code Input */}
-//                     <div className="mb-4">
-//                         <input 
-//                             type="text" 
-//                             value={userData.code || "AD456J"} 
-//                             readOnly 
-//                             className={`form-control text-center reward-code-input`} 
-//                             style={{ height: '56px' }}
-//                         />
-//                     </div>
-                    
-//                     {/* 5. Screenshot Instruction */}
-//                     <p className="detail-label-text">
-//                         Take a screenshot to save your code
-//                     </p>
-
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-// );
 const renderReward = () => (
     // Outer container for the pop-up/modal screen.
     <div 
@@ -609,7 +530,8 @@ useEffect(() => {
     const renderView = () => {
         switch (currentView) {
             case 'spin':
-                return renderSpin();
+                // return renderSpin();
+                return <SpinnerWheel/>;
             case 'reward':
                 return renderReward();
             case 'register':
